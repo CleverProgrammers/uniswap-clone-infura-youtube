@@ -11,10 +11,24 @@ import {
 } from '@rainbow-me/rainbowkit'
 
 import { chain, configureChains, createClient, WagmiConfig } from 'wagmi'
+import { jsonRpcProvider } from 'wagmi/providers/jsonRpc'
+import { infuraProvider } from 'wagmi/providers/infura'
 
-import { publicProvider } from 'wagmi/providers/public'
-
-const { chains, provider } = configureChains([chain.goerli], [publicProvider()])
+const { chains, provider } = configureChains(
+  [chain.localhost],
+  [
+    // infuraProvider({
+    //   apiKey: '103a7d4ae5204915afcccbbfc3bd3ac8',
+    //   priority: 1,
+    // }),
+    jsonRpcProvider({
+      priority: 2,
+      rpc: chain => ({
+        http: `http://127.0.0.1:7545`,
+      }),
+    }),
+  ],
+)
 
 const { connectors } = getDefaultWallets({
   appName: 'Custom Dex',
