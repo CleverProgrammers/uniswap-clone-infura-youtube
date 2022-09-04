@@ -23,7 +23,7 @@ export const contract = async () => {
     const signer = provider.getSigner()
 
     const contractReader = new ethers.Contract(
-      process.env.NEXT_PUBLIC_DEX_ADDRESS,
+      '0xc7a7651483c9a62d6f7b2baa86cd4708fab66017',
       CustomDexABI.abi,
       signer,
     )

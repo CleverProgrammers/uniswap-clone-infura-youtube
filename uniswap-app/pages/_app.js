@@ -11,21 +11,14 @@ import {
 } from '@rainbow-me/rainbowkit'
 
 import { chain, configureChains, createClient, WagmiConfig } from 'wagmi'
-import { jsonRpcProvider } from 'wagmi/providers/jsonRpc'
 import { infuraProvider } from 'wagmi/providers/infura'
 
 const { chains, provider } = configureChains(
-  [chain.localhost],
+  [chain.goerli],
   [
-    // infuraProvider({
-    //   apiKey: '103a7d4ae5204915afcccbbfc3bd3ac8',
-    //   priority: 1,
-    // }),
-    jsonRpcProvider({
-      priority: 2,
-      rpc: chain => ({
-        http: `http://127.0.0.1:7545`,
-      }),
+    infuraProvider({
+      apiKey: 'f0267a8d7d5642caa8735db53507eefd',
+      priority: 1,
     }),
   ],
 )
