@@ -59,6 +59,9 @@ const SwapComponent = () => {
   const notifyError = msg => toast.error(msg, { duration: 6000 })
   const notifySuccess = () => toast.success('Transaction completed.')
   const address = ''
+
+  // Functions for functionality
+
   useEffect(() => {
     // Handling the text of the submit button
 
@@ -118,8 +121,9 @@ const SwapComponent = () => {
       <button
         className={getSwapBtnClassName()}
         onClick={() => {
-          if (swapBtnText === INCREASE_ALLOWANCE) handleIncreaseAllowance()
-          else if (swapBtnText === SWAP) handleSwap()
+          if (swapBtnText === INCREASE_ALLOWANCE)
+            console.log('increaseAllowance')
+          else if (swapBtnText === SWAP) console.log('Swap')
         }}
       >
         {swapBtnText}
@@ -131,15 +135,7 @@ const SwapComponent = () => {
     </div>
   )
 
-  async function handleIncreaseAllowance() {
-    // Increase the allowance
-    setTxPending(true)
-    await increaseAllowance(srcToken, inputValue)
-    setTxPending(false)
-
-    // Set the swapbtn to "Swap" again
-    setSwapBtnText(SWAP)
-  }
+  // Front end functionality
 
   function handleReverseExchange(e) {
     // Setting the isReversed value to prevent the input/output values
